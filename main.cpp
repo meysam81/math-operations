@@ -100,13 +100,16 @@ void calcSum(char* first, char* second, int counterFirst, int counterSecond)
         }
         else // if (counterFirst < counterSecond)
         {
-            int b = second[i] - '0';
-            int sum = b + carrySum;
+            for (; i < counterSecond; ++i) {
 
-            carrySum = sum / 10;
-            sum %= 10;
+                int b = second[i] - '0';
+                int sum = b + carrySum;
 
-            sumResult[counterSum++] = sum + '0';
+                carrySum = sum / 10;
+                sum %= 10;
+
+                sumResult[counterSum++] = sum + '0';
+            }
         }
     }
     if (carrySum > 0)
@@ -132,10 +135,18 @@ char* reverse(char* str, int count)
     }
     return tmp;
 }
-void calcMult(char*, char*, int, int)
+void calcMult(char *first, char *second, int counterFirst, int counterSecond)
 {
+    if (counterFirst == counterSecond)
+    {
 
+    }
+    else
+    {
+
+    }
 }
+
 bool checkDigit(char c)
 {
     if (!(c >= '0' && c <= '9'))
