@@ -71,14 +71,46 @@ void calcSum(char* first, char* second, int counterFirst, int counterSecond)
 
             sumResult[counterSum++] = sum + '0';
         }
-        if (carrySum > 0)
-            sumResult[counterSum++] = carrySum + '0';
     }
     else
     {
+        int i = 0;
+        for (; i < (counterFirst < counterSecond ? counterFirst : counterSecond); ++i) {
 
+            int a = first[i] - '0'
+                    , b = second[i] - '0';
+            int sum = a + b + carrySum;
+
+            carrySum = sum / 10;
+            sum %= 10;
+
+            sumResult[counterSum++] = sum + '0';
+        }
+        if (counterFirst > counterSecond)
+        {
+            for (; i < counterFirst; ++i) {
+                int a = first[i] - '0';
+                int sum = a + carrySum;
+
+                carrySum = sum / 10;
+                sum %= 10;
+
+                sumResult[counterSum++] = sum + '0';
+            }
+        }
+        else // if (counterFirst < counterSecond)
+        {
+            int b = second[i] - '0';
+            int sum = b + carrySum;
+
+            carrySum = sum / 10;
+            sum %= 10;
+
+            sumResult[counterSum++] = sum + '0';
+        }
     }
-
+    if (carrySum > 0)
+        sumResult[counterSum++] = carrySum + '0';
     // reverse the result
     for (int i = 0; i < counterSum / 2; i++)
     {
