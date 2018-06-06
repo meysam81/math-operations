@@ -270,6 +270,8 @@ void calcSub(char* first, char* second, int counterFirst, int counterSecond)
         }
         if (c > 0)
             subResult[counterSub++] = c + '0';
+        else
+            counterSub = 0;
     }
     for (; i < counterFirst; ++i)
     {
